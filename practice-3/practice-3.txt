@@ -1,0 +1,49 @@
+--1
+update instructor
+set salary=salary*1.1;
+
+--2
+delete from course
+where course_id not in (
+select distinct course_id
+from section);
+
+--3
+insert into instructor
+select id,name,dept_name,10000
+from student
+where tot_cred>100;
+
+--4
+insert into course (course_id,title) values ('CS-001','Weekly Seminar');
+
+--5
+insert into section values ('CS-001','1','Fall','2009');
+
+--6
+insert into takes
+select id,course_id,sec_id,semester,year
+from student,section
+where dept_name='Comp.Sci.' and course_id='CS-001';
+
+--7
+delete from takes
+where course_id='CS-001' and id in ( 
+select id
+from student
+where name='Chavez');
+
+--8
+delete from course
+where course_id='CS-001';
+--ERROR:  update or delete on table "course" violates foreign key constraint "section_course_id_fkey" on table "section"
+
+--9
+delete from takes
+where course_id in (
+select course_id
+from course
+where lower(title) like '%database%');
+
+
+
