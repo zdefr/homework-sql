@@ -1,0 +1,55 @@
+--1
+select employee_name,city
+from employee natural join works
+where company_name = 'First Bank Corporation';
+
+--2
+select employee_name,street,city
+from employee natural join works
+where company_name='First Bank Corporation' and salary>10000;
+
+--3
+select employee_name,city
+from employee natural join works
+where company_name <> 'First Bank Corporation';
+
+--4
+select employee_name
+from employee natural join works
+where salary > all (
+select salary
+from works
+where company_name='Small Bank Corporation'
+);
+
+--5
+select company_name
+from company
+where city in (
+select city
+from company
+where company_name='Small Bank Corporation'
+);
+
+--6
+with empnum as(
+select company_name,count(employee_name)
+from works
+group by company_name)
+select company_name
+from empnum
+where count in (
+select max(count)
+from empnum);
+
+--7
+with salavg as(
+select company_name,avg(salary)
+from works
+group by company_name)
+select company_name
+from salavg
+where avg>(
+select avg
+from salavg
+where company_name='First Bank Corporation');

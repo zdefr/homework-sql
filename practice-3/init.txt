@@ -1,0 +1,54 @@
+drop table employee;
+drop table works;
+drop table company;
+drop table manages;
+
+create table employee(
+employee_name varchar(15),
+street varchar(15),
+city varchar(15),
+primary key (employee_name)
+);
+
+create table works(
+employee_name varchar(15),
+company_name varchar(30),
+salary int,
+primary key  (employee_name)
+);
+
+create table company(
+company_name varchar(30),
+city varchar(15),
+primary key (company_name)
+);
+
+create table manages(
+employee_name varchar(15),
+manager_name varchar(15),
+primary key (employee_name)
+);
+
+insert into company values ('First Bank Corporation','Chengdu');
+insert into company values ('Small Bank Corporation','Shenzhen');
+insert into company values ('Tencent','Shenzhen');
+
+insert into employee values ('ming','A','C');
+insert into employee values ('hong','A','C');
+insert into employee values ('lan','B','C');
+insert into employee values ('lv','D','E');
+insert into employee values ('cheng','D','E');
+insert into employee values ('bao','F','E');
+insert into employee values ('cc','D','E');
+insert into employee values ('zz','D','E');
+insert into employee values ('qq','S','G');
+
+insert into works values ('ming','Tencent',12000);
+insert into works values ('hong','Tencent',12000);
+insert into works values ('lan','Tencent',12000);
+insert into works values ('lv','Tencent',12000);
+insert into works values ('cheng','First Bank Corporation',11000);
+insert into works values ('bao','First Bank Corporation',11000);
+insert into works values ('cc','First Bank Corporation',9000);
+insert into works values ('zz','Small Bank Corporation',9000);
+insert into works values ('qq','Small Bank Corporation',8000);
