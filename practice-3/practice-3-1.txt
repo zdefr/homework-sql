@@ -1,6 +1,7 @@
 --1
 update instructor
-set salary=salary*1.1;
+set salary=salary*1.1
+where dept_name='Comp.Sci.';
 
 --2
 delete from course
@@ -15,7 +16,7 @@ from student
 where tot_cred>100;
 
 --4
-insert into course (course_id,title) values ('CS-001','Weekly Seminar');
+insert into course (course_id,title,credits) values ('CS-001','Weekly Seminar','0');
 
 --5
 insert into section values ('CS-001','1','Fall','2009');
